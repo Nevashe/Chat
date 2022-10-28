@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="100.0" minWidth="800.0" prefHeight="400.0" prefWidth="800.0" VBox.Vgrow="ALWAYS" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <children>
+        <HBox fx:id="upperPanel">
+            <children>
+                <TextField fx:id="loginField" prefHeight="25.0" prefWidth="241.0" promptText="Login" HBox.hgrow="ALWAYS">
+                    <HBox.margin>
+                        <Insets right="5.0" />
+                    </HBox.margin>
+                </TextField>
+                <PasswordField fx:id="passwordField" onAction="#tryToAuth" prefHeight="25.0" prefWidth="211.0" promptText="Password">
+                    <HBox.margin>
+                        <Insets left="5.0" />
+                    </HBox.margin>
+                </PasswordField>
+                <Button onAction="#tryToAuth" prefHeight="25.0" prefWidth="60.0" text="Sign In" />
+                <Button mnemonicParsing="false" onAction="#logUp" prefHeight="25.0" prefWidth="60.0" styleClass="btn" text="Log up" />
+            </children>
+        </HBox>
+      <HBox fx:id="loginingPanel" prefHeight="21.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
+         <children>
+                <Label fx:id="userName" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" prefHeight="23.0" prefWidth="745.0" styleClass="userLogin" text="userName" textAlignment="RIGHT" underline="true" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Label>
+            <Button alignment="CENTER" contentDisplay="CENTER" onAction="#disconnect" prefHeight="25.0" prefWidth="77.0" text="Logout" textAlignment="CENTER" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+        <HBox prefHeight="380.0" prefWidth="800.0" VBox.Vgrow="ALWAYS">
+            <children>
+                <VBox prefHeight="400.0" prefWidth="550.0" HBox.Hgrow="ALWAYS">
+                    <children>
+                        <TextArea fx:id="chatArea" editable="false" prefHeight="327.0" prefWidth="550.0" HBox.Hgrow="ALWAYS" VBox.vgrow="ALWAYS" />
+                        <HBox fx:id="bottomPanel" alignment="BOTTOM_CENTER" maxHeight="50.0" minHeight="28.0" prefHeight="48.0" prefWidth="610.0" VBox.vgrow="ALWAYS">
+                            <children>
+                                <TextField fx:id="enterText" onAction="#sendText" prefHeight="48.0" prefWidth="384.0" promptText="Введите сообщение..." HBox.hgrow="ALWAYS">
+                                    <font>
+                                        <Font name="System Italic" size="12.0" />
+                                    </font>
+                                    <cursor>
+                                        <Cursor fx:constant="TEXT" />
+                                    </cursor>
+                                </TextField>
+                                <Button fx:id="sendButton" mnemonicParsing="false" onAction="#sendText" prefHeight="48.0" prefWidth="95.0" text="Send">
+                                    <HBox.margin>
+                                        <Insets left="1.0" />
+                                    </HBox.margin>
+                                    <font>
+                                        <Font name="System Italic" size="18.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <ListView fx:id="clientList" minWidth="100" onMouseClicked="#selectClient" prefHeight="375.0" prefWidth="190.0">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+               <contextMenu>
+                          <ContextMenu>
+                              <items>
+                                  <MenuItem fx:id="addToBlacklist" mnemonicParsing="false" onAction="#addToBlacklist" text="add to blacklist" />
+                        <MenuItem fx:id="removeFromBlacklist" mnemonicParsing="false" onAction="#removeFromBlacklist" text="remove from blacklist" />
+                              </items>
+                          </ContextMenu>
+               </contextMenu>
+                </ListView>
+            </children>
+        </HBox>
+    </children>
+</VBox>
